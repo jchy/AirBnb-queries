@@ -38,5 +38,10 @@ Assignment : 5439, use the airbnb sample data and make the queries
       db.data.find({$or : [{ amenities : {$size : 4}}, {amenities : {$size : 5 }}]} ).count()
     ```
     c. check all listings of reviews where it matches a particular user id and name
-    
+    ```js
+     db.data.aggregate( {$match :{$or: [{"reviews._id" : "332517824" } , { "reviews.reviewer_name" : "Martin"}]}})
+    ```
     d. check all listings of reviews where it matches a particular user id and name, list only reviews that match the particular user id and name
+    ```js
+      db.data.aggregate([ {$match :{$and :[ {"reviews._id" : "332517824" } , { "reviews.reviewer_name" : "Martin" }]}} ,{$project : {"reviews._id":1,  "reviews.reviewer_name":1 }}] )
+    ```
