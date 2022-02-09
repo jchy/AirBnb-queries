@@ -24,5 +24,14 @@ Assignment : 5439, use the airbnb sample data and make the queries
     b. it should belong to CA and rating of 99
 - Ans
 ```js
-  db.data.find( {$and : [ { "review_scores.review_scores_rating" : {$eq : 99}},{ $or : [ {"address.country_code" : "US"} , {"address.country_code" : "AU"}] }] } ).count()
+  db.data.find( {$or : [ {$and : [ {"address.country_code" : "US"} ,{ "review_scores.review_scores_rating" : {$eq : 95}}] }, {$and : [ {"address.country_code" : "CA"} ,{ "review_scores.review_scores_rating" : {$eq : 99}}] }] } ).count()
 ```
+
+5. write a query of using querying arrays
+    a. check all listings which have amenities of size 5, 6, 7, 8, 9, 10
+    ```js 
+    db.data.find({ $or: [{ amenities: { $size: 5 } },{ amenities: { $size: 6 } }, { amenities: { $size: 7 } },{ amenities: { $size: 8 } },{ amenities: { $size: 9 } },{ amenities: { $size: 10 } }  ] }).count()
+    ```
+    b. check all listings of where aminities contain 4 or 5 different listings 
+    c. check all listings of reviews where it matches a particular user id and name 
+    d. check all listings of reviews where it matches a particular user id and name, list only reviews that match the particular user id and name
