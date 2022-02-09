@@ -30,8 +30,11 @@ Assignment : 5439, use the airbnb sample data and make the queries
 5. write a query of using querying arrays
     a. check all listings which have amenities of size 5, 6, 7, 8, 9, 10
     ```js 
-    db.data.find({ $or: [{ amenities: { $size: 5 } },{ amenities: { $size: 6 } }, { amenities: { $size: 7 } },{ amenities: { $size: 8 } },{ amenities: { $size: 9 } },{ amenities: { $size: 10 } }  ] }).count()
+      db.data.find({ $or: [{ amenities: { $size: 5 } },{ amenities: { $size: 6 } }, { amenities: { $size: 7 } },{ amenities: { $size: 8 } },{ amenities: { $size: 9 } },{ amenities: { $size: 10 } }  ] }).count()
     ```
     b. check all listings of where aminities contain 4 or 5 different listings 
+    ```js
+      db.data.find({$or : [{ amenities : {$size : 4}}, {amenities : {$size : 5 }}]} ).count()
+    ```
     c. check all listings of reviews where it matches a particular user id and name 
     d. check all listings of reviews where it matches a particular user id and name, list only reviews that match the particular user id and name
